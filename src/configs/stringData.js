@@ -1,0 +1,47 @@
+export const LogoText = "Modnikky";
+export const NavMenuNewArrivals = "New Arrivals";
+export const NavMenuShop = "Shop";
+export const NavMenuCollections = "Collections";
+export const NavMenuSearch = "Search";
+export const NavMenuSignIn = "Sign In";
+export const NavMenuBag = "Bag";
+export const TopSectionTitleText = "New collection";
+export const TopSectionDescriptionText =
+  "Our easiest chuck-on-and-go staples come with a serious style heritage" +
+  "\n that’s liberating, sexy, comfy and supremely cool. ";
+export const TopSectionButtonText = "Shop new arrival";
+export const SubscriptionSectionTitleText = "Sign up for updates";
+export const SubscriptionDescriptionText =
+  "Sign up for exclusive early sale access and tailored new arrivals.";
+export const FooterCardCustomer = "customer service";
+export const FooterCardContact = "contact";
+export const FooterCardTrack = "track order";
+export const FooterCardDelivery = "delivery & returns";
+export const FooterCardPayment = "payment";
+export const FooterCardReturn = "make a return";
+export const FooterCardFAQ = "FAQ";
+export const FooterCardInfo = "info";
+export const FooterCardGift = "gift vouchers";
+export const FooterCardGuide = "size guide";
+export const FooterCardCareers = "careers at modnikky";
+export const FooterCardAbout = "about us";
+export const FooterCardPolicies = "legal policies";
+export const FooterCardFacebook = "facebook";
+export const FooterCardOdnoklassniki = "odnoklassniki";
+export const FooterCardEmail = "hello@modnikky.com";
+export const FooterCardPhone = "+7 910 832 26XX";
+export const FooterCardAddress = "Visit us at Shalalaeva 23,\n Bologoe, Russia";
+export const Instagram = "instagram";
+export const FooterCardContactInfo = "contact us";
+export const FooterCardFollow = "follow us";
+export const SectionTitleShopText = "Shop by the";
+export const SectionTitleCategoryText = " Category";
+export const LogoHashtag = "#MODNIKKY";
+export const SaleHashtag = "_Sale";
+export const ShopText = "shop";
+export const CategoryDresses = "Dresses";
+export const CategoryTees = "Tees";
+export const CategorySwimwear = "Swimwear";
+export const CategoryDenim = "Denim";
+export const CategoryTops = "Tops";
+export const CategoryBeauty = "Beauty";
