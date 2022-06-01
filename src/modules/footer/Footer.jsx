@@ -39,6 +39,17 @@ const FooterCardContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: start;
+  @media screen and (max-width: 2168px) {
+    width: 100%;
+  }
+  @media screen and (max-width: 851px) {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    & > div:last-child {
+      border-bottom: calc(var(--index) * 0.044) dashed var(--light-gray);
+    }
+  }
 `;
 
 function Footer() {

@@ -4,6 +4,7 @@ export const NavMenuShop = "Shop";
 export const NavMenuCollections = "Collections";
 export const NavMenuSearch = "Search";
 export const NavMenuSignIn = "Sign In";
+export const NavMenuSignUp = "Sign Up";
 export const NavMenuBag = "Bag";
 export const TopSectionTitleText = "New collection";
 export const TopSectionDescriptionText =
@@ -45,3 +46,18 @@ export const CategorySwimwear = "Swimwear";
 export const CategoryDenim = "Denim";
 export const CategoryTops = "Tops";
 export const CategoryBeauty = "Beauty";
+export const ProductDescription = "Product Description";
+export const ShippingReturns = "shipping & returns";
+export const ShippingReturnsText =
+  "Delivery and returns are always free on all orders. Standard delivery takes place approximately within 3-4 working days (5-6 working days in selected countries) from the moment in which the order leaves the warehouse. All orders are processed Monday to Friday, excluding holidays. More detailed information will be provided during the purchasing process. To check the shipping times for each country and the shipping methods available visit the section CUSTOMER SERVICE.\n" +
+  "\n" +
+  "We remind you that this information does not apply in the case of pre-orders, personalized items, and items from the Food&Beverage section. You will find information on returns and delivery times in the respective product data sheets.";
+export const CareAndDetails = "Care and details";
+export const CareAndDetailsText = "External composition: 100% Cotton";
+export const CreateAccount = "Create Account";
+export const RegisterCheckbox =
+  "Let's get personal! We'll send you only the good stuff: \n Exclusive early access to Sale, new arrivals and promotions. No nasties.";
+export const TermsOfService = "Terms of Service";
+export const PrivacyPolicy = "Privacy Policy";
+export const HaveAccount = "I have an account";
+export const DoNotHaveAccount = "I don't have an account";

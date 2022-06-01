@@ -18,7 +18,10 @@ export const SubscriptionDescription = styled.div`
 export const SubscriptionSectionForm = styled.form`
   margin: 0 auto;
   width: calc(var(--index) * 17.56);
-  border-bottom: 2px solid var(--light-gray);
+  border-bottom: calc(var(--index) * 0.044) solid var(--light-gray);
+  @media screen and (max-width: 851px) {
+    width: 100%;
+  }
 `;
 export const SubscriptionSectionInput = styled.input`
   font-size: calc(var(--index) * 0.7);

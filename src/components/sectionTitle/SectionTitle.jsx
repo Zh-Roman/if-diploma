@@ -12,6 +12,12 @@ const StyleSectionTitle = styled.h3`
   & span {
     font-weight: 700;
   }
+
+  @media screen and (max-width: 851px) and (min-height: 541px) {
+    font-size: calc(var(--index) * 1.4);
+    margin-bottom: calc(var(--index) * 1.756);
+    margin-top: calc(var(--index) * -1.756);
+  }
 `;
 
 function SectionTitle({ children }) {

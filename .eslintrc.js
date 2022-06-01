@@ -26,5 +26,6 @@ module.exports = {
     "global-require": "off",
     "react/require-default-props": "off",
     "import/no-unresolved": "off",
+    "jsx-a11y/control-has-associated-label": "off",
   },
 };

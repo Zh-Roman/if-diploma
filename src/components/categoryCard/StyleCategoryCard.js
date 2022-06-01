@@ -13,10 +13,18 @@ export const CategoryIcon = styled.div`
   .category_icon {
     height: calc(var(--index) * 2.2);
     max-width: calc(var(--index) * 2.2);
+    @media screen and (max-width: 851px) {
+      height: calc(var(--index) * 1.756);
+      max-width: calc(var(--index) * 1.756);
+    }
   }
 `;
 export const CategoryTitle = styled.div`
   font-weight: 400;
   font-size: calc(var(--index) * 1.05);
   line-height: calc(var(--index) * 1.756);
+  @media screen and (max-width: 851px) {
+    font-size: calc(var(--index) * 0.92);
+    line-height: calc(var(--index) * 1.756);
+  }
 `;

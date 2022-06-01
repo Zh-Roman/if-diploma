@@ -24,6 +24,12 @@ const StyleSliderWithFourEl = styled.div`
     background-position: center;
     border-radius: 50%;
     box-shadow: 0 4px 4px rgba(0 0 0 0.25);
+
+    @media screen and (max-width: 851px) and (min-height: 541px) {
+      width: calc(var(--index) * 1.4);
+      height: calc(var(--index) * 1.4);
+      top: calc(var(--index) * 5.25);
+    }
   }
 
   .swiper-button-prev {

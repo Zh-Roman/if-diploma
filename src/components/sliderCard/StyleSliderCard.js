@@ -10,6 +10,10 @@ export const SliderImgContainer = styled.div`
   color: var(--main-white);
   position: relative;
   margin-bottom: calc(var(--index) * 0.527);
+  @media screen and (max-width: 851px) and (min-height: 541px) {
+    height: calc(var(--index) * 10.5);
+    width: min(42.7vw, calc(var(--index) * 7.88));
+  }
 
   & svg {
     display: inline-block;
@@ -18,6 +22,10 @@ export const SliderImgContainer = styled.div`
     right: calc(var(--index) * 0.527);
     width: calc(var(--index) * 1.23);
     height: calc(var(--index) * 1.23);
+    @media screen and (max-width: 851px) {
+      width: calc(var(--index) * 0.79);
+      height: calc(var(--index) * 0.79);
+    }
   }
 `;
 export const SliderImg = styled.img`
@@ -37,6 +45,11 @@ export const SaleAmount = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  @media screen and (max-width: 851px) and (min-height: 541px) {
+    font-size: calc(var(--index) * 0.35);
+    height: calc(var(--index) * 0.66);
+    width: calc(var(--index) * 1.185);
+  }
 `;
 export const PriceContainer = styled.div`
   display: flex;
@@ -55,9 +68,15 @@ export const FullPrice = styled.div`
   color: var(--main-black);
   font-size: calc(var(--index) * 0.79);
   margin-right: calc(var(--index) * 0.527);
+  @media screen and (max-width: 851px) and (min-height: 541px) {
+    font-size: calc(var(--index) * 0.44);
+  }
 `;
 export const TotalPrice = styled.div`
   font-weight: 700;
   color: var(--main-red);
   font-size: calc(var(--index) * 0.878);
+  @media screen and (max-width: 851px) and (min-height: 541px) {
+    font-size: calc(var(--index) * 0.527);
+  }
 `;

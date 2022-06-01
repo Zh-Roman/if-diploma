@@ -1,6 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import {
+  faSearch,
+  faBagShopping,
+  faBars,
+  faXmark,
+} from "@fortawesome/free-solid-svg-icons";
 import { faHeart } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import PropTypes from "prop-types";
@@ -14,6 +19,7 @@ import {
   NavMenuShop,
   NavMenuSignIn,
 } from "../../configs/stringData";
+import useWindowSize from "../../hooks/useWindowSize";
 
 const StyleHeader = styled.header`
   position: absolute;
@@ -21,27 +27,55 @@ const StyleHeader = styled.header`
   right: 0;
   z-index: 5;
   height: min-content;
-  width: 100vw;
+  max-width: 100vw;
   padding: calc(var(--index) * 0.878) calc(var(--index) * 2.634);
   color: ${(props) => props.headerColor};
   text-transform: uppercase;
   display: flex;
   justify-content: space-between;
   align-items: end;
+  @media screen and (max-width: 851px) {
+    padding: calc(var(--index) * 0.74) calc(var(--index) * 0.44);
+    text-align: center;
+  }
+`;
+const AdaptiveIcons = styled.nav`
+  display: none;
+  @media screen and (max-width: 851px) {
+    display: block;
+    & svg {
+      height: calc(var(--index) * 0.85);
+      width: calc(var(--index) * 0.85);
+    }
+
+    & svg:not(:first-child) {
+      margin-left: calc(var(--index) * 0.878);
+    }
+  }
 `;
 
 function Header({ headerColor }) {
+  const [burgerMenu, setBurgerMenu] = useState(false);
+  const windowWidth = useWindowSize().sizeWidth;
+  useEffect(() => {
+    if (windowWidth > 850) {
+      setBurgerMenu(false);
+    }
+  }, [windowWidth]);
   return (
     <StyleHeader headerColor={headerColor}>
       {" "}
       {/* Заменить <p> на <Link to=''> */}
-      <NavMenu>
+      <AdaptiveIcons onClick={() => setBurgerMenu(!burgerMenu)}>
+        <FontAwesomeIcon icon={burgerMenu ? faXmark : faBars} />
+      </AdaptiveIcons>
+      <NavMenu adaptiveNavMenu={windowWidth <= 850} burgerMenu={burgerMenu}>
         <p>{NavMenuNewArrivals}</p>
         <p>{NavMenuShop}</p>
         <p>{NavMenuCollections}</p>
       </NavMenu>
       <Logo />
-      <NavMenu>
+      <NavMenu adaptiveNavMenu={windowWidth <= 850}>
         <p>
           <span>
             <FontAwesomeIcon icon={faSearch} />
@@ -54,6 +88,11 @@ function Header({ headerColor }) {
           <FontAwesomeIcon icon={faHeart} />
         </span>
       </NavMenu>
+      <AdaptiveIcons>
+        <FontAwesomeIcon icon={faSearch} />
+        <FontAwesomeIcon icon={faBagShopping} />
+        <FontAwesomeIcon icon={faHeart} />
+      </AdaptiveIcons>
     </StyleHeader>
   );
 }

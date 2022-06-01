@@ -21,6 +21,10 @@ const CategoryCardContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   grid-column-gap: calc(var(--index) * 0.55);
+  @media screen and (max-width: 915px) {
+    grid-template-columns: repeat(2, 1fr);
+    grid-row-gap: calc(var(--index) * 0.88);
+  }
 `;
 
 function CategorySection() {

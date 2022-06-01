@@ -11,7 +11,7 @@ const StyleTopSectionButton = styled.button`
   line-height: calc(var(--index) * 0.7);
   padding: 0 calc(var(--index) * 1.6);
   color: var(--main-white);
-  border: 2px solid var(--main-white);
+  border: calc(var(--index) * 0.044) solid var(--main-white);
 `;
 
 function TopSectionButton() {
