@@ -27,5 +27,7 @@ module.exports = {
     "react/require-default-props": "off",
     "import/no-unresolved": "off",
     "jsx-a11y/control-has-associated-label": "off",
+    "react/jsx-no-useless-fragment": "off",
+    "react/jsx-no-constructed-context-values": "off",
   },
 };

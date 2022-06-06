@@ -5,6 +5,7 @@ export const NavMenuCollections = "Collections";
 export const NavMenuSearch = "Search";
 export const NavMenuSignIn = "Sign In";
 export const NavMenuSignUp = "Sign Up";
+export const NavMenuSignOut = "Sign Out";
 export const NavMenuBag = "Bag";
 export const TopSectionTitleText = "New collection";
 export const TopSectionDescriptionText =

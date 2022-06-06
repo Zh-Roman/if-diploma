@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
-import styled from "styled-components";
+import React, { useContext, useEffect, useState } from "react";
 import {
   faSearch,
+  faUserCheck,
+  faUserXmark,
   faBagShopping,
   faBars,
   faXmark,
@@ -9,6 +10,7 @@ import {
 import { faHeart } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 import Logo from "../../components/logo/Logo";
 import NavMenu from "../../components/navMenu/NavMenu";
 import {
@@ -18,43 +20,14 @@ import {
   NavMenuSearch,
   NavMenuShop,
   NavMenuSignIn,
+  NavMenuSignOut,
 } from "../../configs/stringData";
 import useWindowSize from "../../hooks/useWindowSize";
-
-const StyleHeader = styled.header`
-  position: absolute;
-  left: 0;
-  right: 0;
-  z-index: 5;
-  height: min-content;
-  max-width: 100vw;
-  padding: calc(var(--index) * 0.878) calc(var(--index) * 2.634);
-  color: ${(props) => props.headerColor};
-  text-transform: uppercase;
-  display: flex;
-  justify-content: space-between;
-  align-items: end;
-  @media screen and (max-width: 851px) {
-    padding: calc(var(--index) * 0.74) calc(var(--index) * 0.44);
-    text-align: center;
-  }
-`;
-const AdaptiveIcons = styled.nav`
-  display: none;
-  @media screen and (max-width: 851px) {
-    display: block;
-    & svg {
-      height: calc(var(--index) * 0.85);
-      width: calc(var(--index) * 0.85);
-    }
-
-    & svg:not(:first-child) {
-      margin-left: calc(var(--index) * 0.878);
-    }
-  }
-`;
+import UserAuthContext from "../../context/UserAuthContext";
+import { AdaptiveIcons, SignOutSection, StyleHeader } from "./StyleHeader";
 
 function Header({ headerColor }) {
+  const { userAuthData, setUserAuthData } = useContext(UserAuthContext);
   const [burgerMenu, setBurgerMenu] = useState(false);
   const windowWidth = useWindowSize().sizeWidth;
   useEffect(() => {
@@ -65,31 +38,52 @@ function Header({ headerColor }) {
   return (
     <StyleHeader headerColor={headerColor}>
       {" "}
-      {/* Заменить <p> на <Link to=''> */}
       <AdaptiveIcons onClick={() => setBurgerMenu(!burgerMenu)}>
         <FontAwesomeIcon icon={burgerMenu ? faXmark : faBars} />
       </AdaptiveIcons>
       <NavMenu adaptiveNavMenu={windowWidth <= 850} burgerMenu={burgerMenu}>
-        <p>{NavMenuNewArrivals}</p>
-        <p>{NavMenuShop}</p>
-        <p>{NavMenuCollections}</p>
+        <Link to="/">{NavMenuNewArrivals}</Link>
+        <Link to="/">{NavMenuShop}</Link>
+        <Link to="/">{NavMenuCollections}</Link>
       </NavMenu>
       <Logo />
       <NavMenu adaptiveNavMenu={windowWidth <= 850}>
-        <p>
+        <Link to="/">
           <span>
             <FontAwesomeIcon icon={faSearch} />
           </span>
           {NavMenuSearch}
-        </p>
-        <p>{NavMenuSignIn}</p>
-        <p>{NavMenuBag}</p>
+        </Link>
+        {!userAuthData ? (
+          <Link to="/login">{NavMenuSignIn}</Link>
+        ) : (
+          <SignOutSection
+            role="presentation"
+            onClick={() => setUserAuthData("")}
+          >
+            {NavMenuSignOut}
+          </SignOutSection>
+        )}
+
+        <Link to="/">{NavMenuBag}</Link>
         <span>
           <FontAwesomeIcon icon={faHeart} />
         </span>
       </NavMenu>
       <AdaptiveIcons>
         <FontAwesomeIcon icon={faSearch} />
+        {!userAuthData ? (
+          <Link to="/login">
+            <FontAwesomeIcon icon={faUserXmark} />
+          </Link>
+        ) : (
+          <SignOutSection
+            role="presentation"
+            onClick={() => setUserAuthData("")}
+          >
+            <FontAwesomeIcon icon={faUserCheck} />
+          </SignOutSection>
+        )}
         <FontAwesomeIcon icon={faBagShopping} />
         <FontAwesomeIcon icon={faHeart} />
       </AdaptiveIcons>

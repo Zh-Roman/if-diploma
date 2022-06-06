@@ -8,9 +8,7 @@ const StyleLogo = styled.h1`
   font-family: Helvetica73, sans-serif;
 
   @media screen and (max-width: 851px) {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+    margin-right: calc(var(--index) * -0.878);
     font-size: calc(var(--index) * 0.92);
     line-height: calc(var(--index) * 0.92);
   }
