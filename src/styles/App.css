@@ -1,0 +1,55 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Roboto, sans-serif;
+    list-style-type: none;
+    text-decoration: none;
+}
+
+:active, :hover, :focus {
+    outline: none;
+}
+
+html, body {
+    height: 100%;
+}
+
+#root {
+    min-height: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+:root {
+    --index: calc(1vw + 1vh);
+    --main-white: #FFFFFF;
+    --main-black: #000F08;
+    --gray: #8C8C8C;
+    --light-gray: #D8D8D8;
+    --category-bgc: #EDE7F0;
+    --main-red: #D7302D;
+}
+
+@media screen and (max-width: 851px) {
+    :root {
+        --index: calc((1vw + 1vh) * 1.886);
+    }
+}
+
+@media screen and (max-height: 451px) {
+    :root {
+        --index: calc((1vw + 1vh) * 1.2);
+    }
+}
+
+._container {
+    padding: calc(var(--index) * 3.95) calc(var(--index) * 4.55);
+}
+
+@media screen and (max-width: 851px) {
+    ._container {
+        padding: calc(var(--index) * 1.756) calc(var(--index) * 1.1);
+    }
+}
