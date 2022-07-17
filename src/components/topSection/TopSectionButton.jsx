@@ -2,7 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import { TopSectionButtonText } from "../../configs/stringData";
 
-const StyleTopSectionButton = styled.button`
+export const StyleTopSectionButton = styled.button`
+  cursor: pointer;
   height: calc(var(--index) * 2.2);
   background-color: rgba(0, 0, 0, 0);
   text-transform: uppercase;

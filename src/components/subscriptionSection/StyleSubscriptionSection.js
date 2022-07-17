@@ -16,11 +16,16 @@ export const SubscriptionDescription = styled.div`
   margin-bottom: calc(var(--index) * 1.756);
 `;
 export const SubscriptionSectionForm = styled.form`
+  position: relative;
   margin: 0 auto;
   width: calc(var(--index) * 17.56);
   border-bottom: calc(var(--index) * 0.044) solid var(--light-gray);
   @media screen and (max-width: 851px) {
     width: 100%;
+  }
+  .offscreen {
+    position: absolute;
+    left: -9999px;
   }
 `;
 export const SubscriptionSectionInput = styled.input`
@@ -30,9 +35,11 @@ export const SubscriptionSectionInput = styled.input`
   border: none;
 `;
 export const SubscriptionSectionButton = styled.button`
+  cursor: pointer;
   text-transform: uppercase;
   background-color: var(--main-white);
   font-size: calc(var(--index) * 0.7);
   line-height: calc(var(--index) * 1.05);
   border: none;
+  color: var(--main-black);
 `;

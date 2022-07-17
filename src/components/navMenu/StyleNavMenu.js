@@ -27,10 +27,10 @@ export const AdaptiveNavMenu = styled.nav`
   line-height: calc(var(--index) * 0.7);
   background-color: var(--gray);
   position: absolute;
-  left: calc(var(--index) * 1.5);
+  left: 0;
   top: calc(var(--index) * 0.75);
-  height: calc(var(--index) * 0.878);
-  width: calc(var(--index) * 16.7);
+  height: calc(var(--index) * 1.756);
+  width: 100%;
   z-index: 10;
   align-items: center;
   justify-content: space-around;

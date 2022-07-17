@@ -25,7 +25,8 @@ html, body {
 :root {
     --index: calc(1vw + 1vh);
     --main-white: #FFFFFF;
-    --main-black: #000F08;
+    /*--main-black: #000F08;*/
+    --main-black: green;
     --gray: #8C8C8C;
     --light-gray: #D8D8D8;
     --category-bgc: #EDE7F0;
@@ -47,7 +48,9 @@ html, body {
 ._container {
     padding: calc(var(--index) * 3.95) calc(var(--index) * 4.55);
 }
-
+._padding-top {
+    padding-top:calc(var(--index) * 3.95) ;
+}
 @media screen and (max-width: 851px) {
     ._container {
         padding: calc(var(--index) * 1.756) calc(var(--index) * 1.1);

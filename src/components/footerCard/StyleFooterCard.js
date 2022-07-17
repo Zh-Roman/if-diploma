@@ -18,6 +18,7 @@ export const StyleFooterCard = styled.div`
 
   & li {
     text-transform: uppercase;
+    cursor: pointer;
   }
 
   & li:not(:last-child) {

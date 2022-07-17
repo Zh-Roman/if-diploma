@@ -13,6 +13,9 @@ export const StyleHeader = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: end;
+  .favorites_icon {
+    color: var(--main-red);
+  }
   @media screen and (max-width: 851px) {
     padding: calc(var(--index) * 0.74) calc(var(--index) * 0.44);
     text-align: center;
@@ -33,6 +36,9 @@ export const AdaptiveIcons = styled.nav`
     & svg {
       margin-left: calc(var(--index) * 0.878);
     }
+  }
+  & svg:last-child {
+    fill: var(--main-red);
   }
 `;
 export const SignOutSection = styled.span`

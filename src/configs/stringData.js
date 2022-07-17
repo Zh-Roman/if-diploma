@@ -7,11 +7,13 @@ export const NavMenuSignIn = "Sign In";
 export const NavMenuSignUp = "Sign Up";
 export const NavMenuSignOut = "Sign Out";
 export const NavMenuBag = "Bag";
+export const NavMenuFavorites = "Favorites";
 export const TopSectionTitleText = "New collection";
 export const TopSectionDescriptionText =
   "Our easiest chuck-on-and-go staples come with a serious style heritage" +
   "\n that’s liberating, sexy, comfy and supremely cool. ";
 export const TopSectionButtonText = "Shop new arrival";
+export const SortedSectionButtonText = "Show more";
 export const SubscriptionSectionTitleText = "Sign up for updates";
 export const SubscriptionDescriptionText =
   "Sign up for exclusive early sale access and tailored new arrivals.";
@@ -62,3 +64,16 @@ export const TermsOfService = "Terms of Service";
 export const PrivacyPolicy = "Privacy Policy";
 export const HaveAccount = "I have an account";
 export const DoNotHaveAccount = "I don't have an account";
+export const SearchSectionInputPlaceholder = "enter search terms";
+export const SearchResults = "Search results";
+export const ItemsText = "items";
+export const ItemText = "item";
+export const ColorText = "color";
+export const SizeText = "size";
+export const QuantityText = "quantity";
+export const RemoveText = "remove";
+export const EmptyBag = "There are no items in the bag to order.";
+export const EmptyFavorites = "There are no items in the favorites.";
+export const TotalUSDText = "Total USD $";
+export const CheckoutText = "Proceed to checkout";
+export const AddingToBag = "Add to bag";

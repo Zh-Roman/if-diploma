@@ -21,7 +21,7 @@ function SliderWithFourEl({ cardData }) {
   return (
     <StyleSliderWithFourEl>
       <Swiper navigation spaceBetween={24} slidesPerView={sliderPerView} loop>
-        {cardData.map((item) => (
+        {cardData?.map((item) => (
           <SwiperSlide key={item.id}>
             <SliderCard cardData={item} />
           </SwiperSlide>
