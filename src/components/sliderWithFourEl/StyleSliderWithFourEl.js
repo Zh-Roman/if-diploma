@@ -4,7 +4,8 @@ import ArrowSVG from "../../assets/images/SVG/sliderArrow.svg";
 const StyleSliderWithFourEl = styled.div`
   width: 100%;
   position: relative;
-
+  opacity: ${(props) => props.sliderToShow};
+  transition: opacity var(--transition);
   .swiper {
     position: static;
   }

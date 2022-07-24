@@ -1,7 +1,7 @@
 export const LogoText = "Modnikky";
 export const NavMenuNewArrivals = "New Arrivals";
 export const NavMenuShop = "Shop";
-export const NavMenuCollections = "Collections";
+export const NavMenuCollections = "Sale";
 export const NavMenuSearch = "Search";
 export const NavMenuSignIn = "Sign In";
 export const NavMenuSignUp = "Sign Up";
@@ -77,3 +77,20 @@ export const EmptyFavorites = "There are no items in the favorites.";
 export const TotalUSDText = "Total USD $";
 export const CheckoutText = "Proceed to checkout";
 export const AddingToBag = "Add to bag";
+export const AirmasterWomenText = "Airmaster Women Collection";
+export const AirmasterMenText = "Airmaster Men Collection";
+export const PersolLogoText = "Dolce&Gabbana x Persol";
+export const PersolDescriptionText =
+  "The unmistakable style of Persol fuses with the creativity of\n" +
+  "          Dolce&Gabbana in a Special Collection of sunglasses and optical\n" +
+  "          frames. New models that combine sublime aesthetics with technical\n" +
+  "          precision, where classic shapes revisited with transparencies, logo\n" +
+  "          details and all-new color combinations, blending the DNA of the two\n" +
+  "          iconic Italian brands with unprecedented modernity.";
+export const RenaissanceTitleText =
+  "presents the Renaissance\n\tWomen's Collection";
+export const RebornTitleText =
+  "presents the Reborn To Live\n\tMen's Collection";
+export const PersolTitleText =
+  "in a Special Collection\n\tof sunglasses and\n\t\toptical frames";
+export const SeeTheCollection = "See the collection";

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 import TopSection from "../modules/topSection/TopSection";
@@ -16,13 +16,21 @@ import SectionTitle from "../components/sectionTitle/SectionTitle";
 import SearchSection from "../modules/seacrhSection/SearchSection";
 import { sortedSearchProductsDataSelector } from "../ducks/sortedSearchProducts/selectors";
 import { SearchResults } from "../configs/stringData";
+import RefForScrollContext from "../context/refForScrollContext";
 
 export const HomepageStyle = styled.div`
   color: var(--main-black);
 `;
 
 function Homepage() {
-  const [showSearchSection, setShowSearchSection] = useState(false);
+  const {
+    refForShopSection,
+    refForSaleSection,
+    setRefForShopSection,
+    setRefForSaleSection,
+    refForSearchSection,
+    setRefForSearchSection,
+  } = useContext(RefForScrollContext);
   const sortedProductsData = useSelector(sortedProductsDataSelector);
   const sortedSearchProductsData = useSelector(
     sortedSearchProductsDataSelector
@@ -33,6 +41,8 @@ function Homepage() {
     ref.current?.scrollIntoView({ block: "start", behavior: "smooth" });
   const refForSortedProductsSection = useRef(null);
   const refForSortedSearchProductsSection = useRef(null);
+  const refForShopCategory = useRef(null);
+  const refForSaleCategory = useRef(null);
   useEffect(() => {
     if (sortedProductsData && sortedProductsData.length === 0) {
       executeScrollToData(refForSortedProductsSection);
@@ -41,18 +51,23 @@ function Homepage() {
   useEffect(() => {
     if (sortedSearchProductsData && sortedSearchProductsData.length === 0) {
       executeScrollToData(refForSortedSearchProductsSection);
+      setRefForSearchSection(false);
     }
   }, [sortedSearchProductsData]);
-
+  useEffect(() => {
+    if (refForShopSection) {
+      executeScrollToData(refForShopCategory);
+      setRefForShopSection(false);
+    }
+    if (refForSaleSection) {
+      executeScrollToData(refForSaleCategory);
+      setRefForSaleSection(false);
+    }
+  }, [refForShopSection, refForSaleSection]);
   return (
     <HomepageStyle>
-      {showSearchSection && (
-        <SearchSection setShowSearchSection={setShowSearchSection} />
-      )}
-      <Header
-        headerColor="var(--main-white)"
-        setShowSearchSection={setShowSearchSection}
-      />
+      {refForSearchSection && <SearchSection />}
+      <Header headerColor="var(--main-white)" />
       <TopSection />
       {sortedSearchProductsData && sortedSearchProductsData.length > 0 ? (
         <SortedProductsSection
@@ -81,8 +96,8 @@ function Homepage() {
           <span>{`No "${filterValue}" products found`}</span>
         </SectionTitle>
       ) : null}
-      <SaleSection />
-      <InstagramSection />
+      <SaleSection ref={refForSaleCategory} />
+      <InstagramSection ref={refForShopCategory} />
     </HomepageStyle>
   );
 }

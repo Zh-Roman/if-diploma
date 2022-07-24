@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import PropTypes from "prop-types";
+import React, { useContext, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch } from "react-redux";
@@ -7,14 +6,16 @@ import { SearchSectionInputPlaceholder } from "../../configs/stringData";
 import { getSearchValue } from "../../ducks/productFilter/actions";
 import { getSortedSearchProductsRequested } from "../../ducks/sortedSearchProducts/actions";
 import { SearchSectionStyle, SearchSectionForm } from "./StyleSearchSection";
+import RefForScrollContext from "../../context/refForScrollContext";
 
-function SearchSection({ setShowSearchSection }) {
+function SearchSection() {
   const [searchInputValue, setSearchInputValue] = useState("");
+  const { setRefForSearchSection } = useContext(RefForScrollContext);
   const dispatch = useDispatch();
 
   const handleSearchRequest = (e) => {
     e.preventDefault();
-    setShowSearchSection(false);
+    setRefForSearchSection(false);
     dispatch(getSearchValue(searchInputValue));
     dispatch(getSortedSearchProductsRequested());
   };
@@ -23,7 +24,7 @@ function SearchSection({ setShowSearchSection }) {
       <span
         role="presentation"
         onClick={() => {
-          setShowSearchSection(false);
+          setRefForSearchSection(false);
         }}
       >
         <FontAwesomeIcon icon={faXmark} />
@@ -43,7 +44,4 @@ function SearchSection({ setShowSearchSection }) {
   );
 }
 
-SearchSection.propTypes = {
-  setShowSearchSection: PropTypes.func,
-};
 export default SearchSection;

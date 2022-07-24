@@ -27,6 +27,9 @@ export const SliderImgContainer = styled.div`
   .full_heart {
     color: var(--main-red);
   }
+  .empty_heart {
+    color: var(--main-black);
+  }
 `;
 export const SliderImg = styled.img`
   display: block;

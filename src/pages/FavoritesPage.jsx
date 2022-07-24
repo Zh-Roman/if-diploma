@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "../modules/header/Header";
-import FavoritesSection from "../components/favoritesSection/FavoritesSection";
+import FavoritesSection from "../modules/favoritesSection/FavoritesSection";
 
 function FavoritesPage() {
   return (

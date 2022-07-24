@@ -4,6 +4,7 @@ export const StyleNavMenu = styled.nav`
   @media screen and (max-width: 851px) {
     display: none;
   }
+  width: 20vw;
   display: flex;
   justify-content: space-between;
   align-items: end;
@@ -19,6 +20,10 @@ export const StyleNavMenu = styled.nav`
 
   & span:first-child {
     margin-right: calc(var(--index) * 0.22);
+  }
+
+  & div {
+    cursor: pointer;
   }
 `;
 export const AdaptiveNavMenu = styled.nav`

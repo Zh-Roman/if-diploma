@@ -36,4 +36,13 @@
     src: url(../assets/fonts/RobotoRegular.woff2);
     font-weight: 400;
 }
-
+@font-face {
+    font-family: Raleway100;
+    src: url("../assets/fonts/Raleway100.woff2");
+    font-weight: 100;
+}
+@font-face {
+    font-family: Raleway300;
+    src: url("../assets/fonts/Raleway300.woff2");
+    font-weight: 300;
+}

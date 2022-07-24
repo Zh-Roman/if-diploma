@@ -37,17 +37,17 @@ export const MagnifierContent = styled.img`
 export const MagnifierPointer = styled.div.attrs((props) => ({
   style: {
     display: props.showMagnifier ? "" : "none",
-    top: `${props.yPos - 200 / 2}px`,
-    left: `${props.xPos - 300 / 2}px`,
+    top: `${props.yPos - 300 / 2}px`,
+    left: `${props.xPos - 450 / 2}px`,
     backgroundImage: `url('${props.src}')`,
     backgroundRepeat: "no-repeat",
     backgroundSize: `${props.imgWidth * 2}px ${props.imgHeight * 2}px`,
-    backgroundPositionX: `${-props.xPos * 2 + 300 / 2}px`,
-    backgroundPositionY: `${-props.yPos * 2 + 200 / 2}px`,
+    backgroundPositionX: `${-props.xPos * 2 + 450 / 2}px`,
+    backgroundPositionY: `${-props.yPos * 2 + 300 / 2}px`,
   },
 }))`
-  height: 200px;
-  width: 300px;
+  height: 300px;
+  width: 450px;
   position: absolute;
   pointer-events: none;
   opacity: 1;

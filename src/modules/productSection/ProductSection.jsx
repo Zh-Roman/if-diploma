@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
 import SwiperCore, { Navigation } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -24,11 +24,18 @@ export const ProductImagesContainer = styled.div`
 `;
 
 function ProductSection() {
+  const productSectionRef = useRef(null);
   const productData = useSelector(sortedProductByIdDataSelector);
   const windowWidth = useWindowSize().sizeWidth;
   const windowHeight = useWindowSize().sizeHeight;
+  useEffect(() => {
+    productSectionRef.current.scrollIntoView({
+      block: "start",
+      behavior: "smooth",
+    });
+  }, [productData]);
   return (
-    <StyleProductSection>
+    <StyleProductSection ref={productSectionRef}>
       {windowWidth <= 912 && windowHeight > 540 && (
         <ProductImagesContainer>
           <Swiper navigation spaceBetween={0} slidesPerView={1} loop>

@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import SectionTitle from "../../components/sectionTitle/SectionTitle";
 import ProductCard from "../../components/productCard/ProductCard";
 import { SortedSectionButtonText } from "../../configs/stringData";
-import { StyleTopSectionButton } from "../../components/topSection/TopSectionButton";
+import { StyleTopSectionButton } from "../../components/topSectionParts/TopSectionButton";
 import {
   SortedProductsSectionStyle,
   SortedProductsBody,

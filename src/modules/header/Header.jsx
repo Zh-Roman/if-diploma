@@ -12,7 +12,6 @@ import { faHeart as emptyHeart } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import Logo from "../../components/logo/Logo";
 import NavMenu from "../../components/navMenu/NavMenu";
@@ -32,13 +31,12 @@ import { productsToBagSelector } from "../../ducks/productsToBag/selectors";
 import { orderRequestResultSelector } from "../../ducks/orderRequest/selectors";
 import { sendOrderFromBagSucceeded } from "../../ducks/orderRequest/actions";
 import { productsToFavoritesSelector } from "../../ducks/productsToFavorites/selectors";
+import RefForScrollContext from "../../context/refForScrollContext";
 
-export const SearchModuleStyle = styled.div`
-  cursor: pointer;
-`;
-
-function Header({ headerColor, setShowSearchSection }) {
+function Header({ headerColor }) {
   const { userAuthData, setUserAuthData } = useContext(UserAuthContext);
+  const { setRefForShopSection, setRefForSaleSection, setRefForSearchSection } =
+    useContext(RefForScrollContext);
   const productsInBagSelector = useSelector(productsToBagSelector).products;
   const orderRequestResult = useSelector(orderRequestResultSelector);
   const [productsInBagValue, setProductsInBagValue] = useState([]);
@@ -73,18 +71,22 @@ function Header({ headerColor, setShowSearchSection }) {
         burgerMenu={burgerMenu}
         setBurgerMenu={setBurgerMenu}
       >
-        <Link to="/">{NavMenuNewArrivals}</Link>
-        <Link to="/">{NavMenuShop}</Link>
-        <Link to="/">{NavMenuCollections}</Link>
+        <Link to="/new_arrival">{NavMenuNewArrivals}</Link>
+        <Link to="/" onClick={() => setRefForShopSection(true)}>
+          {NavMenuShop}
+        </Link>
+        <Link to="/" onClick={() => setRefForSaleSection(true)}>
+          {NavMenuCollections}
+        </Link>
       </NavMenu>
       <Logo />
       <NavMenu adaptiveNavMenu={windowWidth <= 850}>
-        <SearchModuleStyle onClick={() => setShowSearchSection(true)}>
+        <Link to="/" onClick={() => setRefForSearchSection(true)}>
           <span>
             <FontAwesomeIcon icon={faSearch} />
           </span>
           {NavMenuSearch}
-        </SearchModuleStyle>
+        </Link>
         {!userAuthData ? (
           <Link to="/login">{NavMenuSignIn}</Link>
         ) : (
@@ -119,10 +121,12 @@ function Header({ headerColor, setShowSearchSection }) {
         </Link>
       </NavMenu>
       <AdaptiveIcons>
-        <FontAwesomeIcon
-          onClick={() => setShowSearchSection(true)}
-          icon={faSearch}
-        />
+        <Link to="/">
+          <FontAwesomeIcon
+            onClick={() => setRefForSearchSection(true)}
+            icon={faSearch}
+          />
+        </Link>
         {!userAuthData ? (
           <Link to="/login">
             <FontAwesomeIcon icon={faUserXmark} />
@@ -155,6 +159,5 @@ function Header({ headerColor, setShowSearchSection }) {
 
 Header.propTypes = {
   headerColor: PropTypes.string.isRequired,
-  setShowSearchSection: PropTypes.func,
 };
 export default Header;

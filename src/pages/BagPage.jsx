@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "../modules/header/Header";
-import BagSection from "../components/bagSection/BagSection";
+import BagSection from "../modules/bagSection/BagSection";
 
 function BagPage() {
   return (
