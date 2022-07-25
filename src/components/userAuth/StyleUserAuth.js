@@ -191,6 +191,8 @@ export const ErrorMessage = styled.p`
   }
 `;
 export const MainButtonStyle = styled.button`
+  cursor: pointer;
+  display: block;
   margin: 0 auto;
   height: calc(var(--index) * 2.2);
   width: calc(var(--index) * 10.5);

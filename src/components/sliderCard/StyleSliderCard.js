@@ -1,19 +1,16 @@
 import styled from "styled-components";
 
-export const StyleSliderCard = styled.div`
+export const StyleSliderCard = styled.section`
   display: flex;
   flex-direction: column;
+  cursor: pointer;
+  position: relative;
 `;
 export const SliderImgContainer = styled.div`
-  height: calc(var(--index) * 17.56);
-  width: calc(var(--index) * 13.15);
+  height: 100%;
+  width: 100%;
   color: var(--main-white);
-  position: relative;
   margin-bottom: calc(var(--index) * 0.527);
-  @media screen and (max-width: 851px) and (min-height: 541px) {
-    height: calc(var(--index) * 10.5);
-    width: min(42.7vw, calc(var(--index) * 7.88));
-  }
 
   & svg {
     display: inline-block;
@@ -27,6 +24,12 @@ export const SliderImgContainer = styled.div`
       height: calc(var(--index) * 0.79);
     }
   }
+  .full_heart {
+    color: var(--main-red);
+  }
+  .empty_heart {
+    color: var(--main-black);
+  }
 `;
 export const SliderImg = styled.img`
   display: block;
@@ -36,7 +39,7 @@ export const SliderImg = styled.img`
 export const SaleAmount = styled.div`
   position: absolute;
   left: 0;
-  bottom: 0;
+  top: 0;
   background-color: var(--main-red);
   height: calc(var(--index) * 1.05);
   width: calc(var(--index) * 1.93);

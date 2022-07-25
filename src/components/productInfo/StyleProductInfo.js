@@ -62,6 +62,7 @@ export const SizeValueContainer = styled.div`
   }
 `;
 export const SizeValue = styled.div`
+  display: block;
   text-align: center;
   cursor: pointer;
   padding: 0 calc(var(--index) * 0.22) calc(var(--index) * 0.22);
@@ -87,10 +88,12 @@ export const ProductInfoButtonsContainer = styled.div`
   }
 `;
 export const ProductInfoBagButton = styled.button`
+  cursor: pointer;
   width: max-content;
   padding: 0 calc(var(--index) * 2.04);
   margin-right: calc(var(--index) * 0.088);
 `;
 export const ProductInfoFavoritesButton = styled.button`
+  cursor: pointer;
   width: calc(var(--index) * 2.2);
 `;

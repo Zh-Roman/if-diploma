@@ -1,4 +1,4 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ShopText, Instagram, LogoHashtag } from "../../configs/stringData";
@@ -33,24 +33,22 @@ const instagramPics = [
   },
 ];
 
-function InstagramSection() {
-  return (
-    <StyleInstagramSection className="_container">
-      <InstagramSectionTitle>
-        {ShopText}&nbsp;
-        {Instagram}
-        <span>
-          {ShopText} <FontAwesomeIcon icon={faAngleRight} />
-        </span>
-      </InstagramSectionTitle>
-      <InstagramSectionGrid>
-        {instagramPics.map((pic) => (
-          <InstagramSectionItem key={pic.id} bcgImg={pic.imgUrl} />
-        ))}
-      </InstagramSectionGrid>
-      <LogoHashtagDiv>{LogoHashtag}</LogoHashtagDiv>
-    </StyleInstagramSection>
-  );
-}
+const InstagramSection = forwardRef((props, ref) => (
+  <StyleInstagramSection className="_container" ref={ref}>
+    <InstagramSectionTitle>
+      {ShopText}&nbsp;
+      {Instagram}
+      <span>
+        {ShopText} <FontAwesomeIcon icon={faAngleRight} />
+      </span>
+    </InstagramSectionTitle>
+    <InstagramSectionGrid>
+      {instagramPics.map((pic) => (
+        <InstagramSectionItem key={pic.id} bcgImg={pic.imgUrl} />
+      ))}
+    </InstagramSectionGrid>
+    <LogoHashtagDiv>{LogoHashtag}</LogoHashtagDiv>
+  </StyleInstagramSection>
+));
 
 export default InstagramSection;

@@ -30,6 +30,9 @@ html, body {
     --light-gray: #D8D8D8;
     --category-bgc: #EDE7F0;
     --main-red: #D7302D;
+    --transition: .75s cubic-bezier(.2, .6, 0, 1);
+    --side-small: 26;
+    --side-big: 36;
 }
 
 @media screen and (max-width: 851px) {
@@ -47,9 +50,14 @@ html, body {
 ._container {
     padding: calc(var(--index) * 3.95) calc(var(--index) * 4.55);
 }
-
+._padding-top {
+    padding-top:calc(var(--index) * 3.95) ;
+}
 @media screen and (max-width: 851px) {
     ._container {
         padding: calc(var(--index) * 1.756) calc(var(--index) * 1.1);
+    }
+    ._padding-top {
+        padding-top:calc(var(--index) *  2.4) ;
     }
 }

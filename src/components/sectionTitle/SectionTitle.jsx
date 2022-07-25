@@ -1,4 +1,4 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
@@ -19,12 +19,14 @@ const StyleSectionTitle = styled.h3`
     margin-top: calc(var(--index) * -1.756);
   }
 `;
-
-function SectionTitle({ children }) {
-  return <StyleSectionTitle>{children}</StyleSectionTitle>;
-}
+const SectionTitle = forwardRef(({ children, className }, ref) => (
+  <StyleSectionTitle className={className} ref={ref}>
+    {children}
+  </StyleSectionTitle>
+));
 
 SectionTitle.propTypes = {
   children: PropTypes.oneOfType([PropTypes.node, PropTypes.element]).isRequired,
+  className: PropTypes.string,
 };
 export default SectionTitle;

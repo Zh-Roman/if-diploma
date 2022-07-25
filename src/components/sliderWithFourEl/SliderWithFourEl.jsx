@@ -3,13 +3,13 @@ import SwiperCore, { Navigation } from "swiper";
 import "swiper/css/bundle";
 import { SwiperSlide, Swiper } from "swiper/react";
 import PropTypes from "prop-types";
-import SliderCard from "../sliderCard/SliderCard";
 import StyleSliderWithFourEl from "./StyleSliderWithFourEl";
 import useWindowSize from "../../hooks/useWindowSize";
+import ProductCard from "../productCard/ProductCard";
 
 SwiperCore.use([Navigation]);
 
-function SliderWithFourEl({ cardData }) {
+function SliderWithFourEl({ collectionData, sliderToShow }) {
   const windowWidth = useWindowSize().sizeWidth;
   const windowHeight = useWindowSize().sizeHeight;
   let sliderPerView = 4;
@@ -19,11 +19,11 @@ function SliderWithFourEl({ cardData }) {
     sliderPerView = 3;
   }
   return (
-    <StyleSliderWithFourEl>
+    <StyleSliderWithFourEl sliderToShow={sliderToShow}>
       <Swiper navigation spaceBetween={24} slidesPerView={sliderPerView} loop>
-        {cardData.map((item) => (
+        {collectionData?.map((item) => (
           <SwiperSlide key={item.id}>
-            <SliderCard cardData={item} />
+            <ProductCard productsToRender={item} forSlider />
           </SwiperSlide>
         ))}
       </Swiper>
@@ -32,15 +32,26 @@ function SliderWithFourEl({ cardData }) {
 }
 
 SliderWithFourEl.propTypes = {
-  cardData: PropTypes.arrayOf(
+  collectionData: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.number,
-      imgUrl: PropTypes.string,
-      imgAlt: PropTypes.string,
-      saleAmount: PropTypes.string,
-      fullPrice: PropTypes.string,
-      totalPrice: PropTypes.string,
+      id: PropTypes.string,
+      type: PropTypes.string,
+      name: PropTypes.string,
+      price: PropTypes.shape({
+        currency: PropTypes.string,
+        value: PropTypes.string,
+        saleAmount: PropTypes.string,
+        fullPrice: PropTypes.string,
+      }),
+      color: PropTypes.shape({
+        name: PropTypes.string,
+        hex: PropTypes.string,
+      }),
+      availableSizes: PropTypes.arrayOf(PropTypes.string),
+      description: PropTypes.string,
+      images: PropTypes.arrayOf(PropTypes.string),
     })
   ),
+  sliderToShow: PropTypes.number,
 };
 export default SliderWithFourEl;

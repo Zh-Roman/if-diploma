@@ -6,7 +6,7 @@ import {
   faOdnoklassnikiSquare,
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import SubscriptionSection from "../../components/subscriptionSection/SubscriptionSection";
+import SubscriptionSection from "../subscriptionSection/SubscriptionSection";
 import FooterCard from "../../components/footerCard/FooterCard";
 import {
   FooterCardContact,

@@ -17,7 +17,7 @@ module.exports = {
     quotes: ["error", "double"],
     "no-var": "error",
     semi: "error",
-    indent: "error",
+    indent: "off",
     "no-multi-spaces": "error",
     "space-in-parens": "error",
     "no-multiple-empty-lines": "error",
@@ -29,5 +29,9 @@ module.exports = {
     "jsx-a11y/control-has-associated-label": "off",
     "react/jsx-no-useless-fragment": "off",
     "react/jsx-no-constructed-context-values": "off",
+    "class-methods-use-this": "off",
+    "consistent-return": "off",
+    "import/prefer-default-export": "off",
+    "no-nested-ternary": "off",
   },
 };

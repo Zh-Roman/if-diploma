@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 import { LogoText } from "../../configs/stringData";
 
 const StyleLogo = styled.h1`
@@ -15,7 +16,11 @@ const StyleLogo = styled.h1`
 `;
 
 function Logo() {
-  return <StyleLogo>{LogoText}</StyleLogo>;
+  return (
+    <Link to="/">
+      <StyleLogo>{LogoText}</StyleLogo>
+    </Link>
+  );
 }
 
 export default Logo;

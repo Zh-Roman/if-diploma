@@ -4,7 +4,8 @@ import ArrowSVG from "../../assets/images/SVG/sliderArrow.svg";
 const StyleSliderWithFourEl = styled.div`
   width: 100%;
   position: relative;
-
+  opacity: ${(props) => props.sliderToShow};
+  transition: opacity var(--transition);
   .swiper {
     position: static;
   }
@@ -13,8 +14,8 @@ const StyleSliderWithFourEl = styled.div`
   .swiper-button-prev {
     margin-top: 0;
     position: absolute;
-    transform: translate(50%, -50%);
-    top: calc(var(--index) * 8.78);
+    transform: translate(50%, -75%);
+    top: 50%;
     right: 0;
     width: calc(var(--index) * 3.07);
     height: calc(var(--index) * 3.07);
@@ -28,12 +29,12 @@ const StyleSliderWithFourEl = styled.div`
     @media screen and (max-width: 851px) and (min-height: 541px) {
       width: calc(var(--index) * 1.4);
       height: calc(var(--index) * 1.4);
-      top: calc(var(--index) * 5.25);
+      top: 44%;
     }
   }
 
   .swiper-button-prev {
-    transform: translate(-50%, -50%) scale(-1, 1);
+    transform: translate(-50%, -75%) scale(-1, 1);
     left: 0;
   }
 

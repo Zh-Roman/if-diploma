@@ -6,11 +6,13 @@ import {
   faBagShopping,
   faBars,
   faXmark,
+  faHeart,
 } from "@fortawesome/free-solid-svg-icons";
-import { faHeart } from "@fortawesome/free-regular-svg-icons";
+import { faHeart as emptyHeart } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import Logo from "../../components/logo/Logo";
 import NavMenu from "../../components/navMenu/NavMenu";
 import {
@@ -25,30 +27,61 @@ import {
 import useWindowSize from "../../hooks/useWindowSize";
 import UserAuthContext from "../../context/UserAuthContext";
 import { AdaptiveIcons, SignOutSection, StyleHeader } from "./StyleHeader";
+import { productsToBagSelector } from "../../ducks/productsToBag/selectors";
+import { orderRequestResultSelector } from "../../ducks/orderRequest/selectors";
+import { sendOrderFromBagSucceeded } from "../../ducks/orderRequest/actions";
+import { productsToFavoritesSelector } from "../../ducks/productsToFavorites/selectors";
+import RefForScrollContext from "../../context/refForScrollContext";
 
 function Header({ headerColor }) {
   const { userAuthData, setUserAuthData } = useContext(UserAuthContext);
+  const { setRefForShopSection, setRefForSaleSection, setRefForSearchSection } =
+    useContext(RefForScrollContext);
+  const productsInBagSelector = useSelector(productsToBagSelector).products;
+  const orderRequestResult = useSelector(orderRequestResultSelector);
+  const [productsInBagValue, setProductsInBagValue] = useState([]);
   const [burgerMenu, setBurgerMenu] = useState(false);
   const windowWidth = useWindowSize().sizeWidth;
+  const dispatch = useDispatch();
+  const productToFavoritesSelector = useSelector(productsToFavoritesSelector);
+
   useEffect(() => {
     if (windowWidth > 850) {
       setBurgerMenu(false);
     }
   }, [windowWidth]);
+  useEffect(() => {
+    if (
+      productsInBagSelector.length === 0 &&
+      JSON.parse(localStorage.getItem("bagStorage")).length !== 0
+    ) {
+      setProductsInBagValue(JSON.parse(localStorage.getItem("bagStorage")));
+    } else {
+      setProductsInBagValue(productsInBagSelector);
+    }
+  }, [productsInBagSelector]);
   return (
     <StyleHeader headerColor={headerColor}>
       {" "}
       <AdaptiveIcons onClick={() => setBurgerMenu(!burgerMenu)}>
         <FontAwesomeIcon icon={burgerMenu ? faXmark : faBars} />
       </AdaptiveIcons>
-      <NavMenu adaptiveNavMenu={windowWidth <= 850} burgerMenu={burgerMenu}>
-        <Link to="/">{NavMenuNewArrivals}</Link>
-        <Link to="/">{NavMenuShop}</Link>
-        <Link to="/">{NavMenuCollections}</Link>
+      <NavMenu
+        adaptiveNavMenu={windowWidth <= 850}
+        burgerMenu={burgerMenu}
+        setBurgerMenu={setBurgerMenu}
+      >
+        <Link to="/new_arrival">{NavMenuNewArrivals}</Link>
+        <Link to="/" onClick={() => setRefForShopSection(true)}>
+          {NavMenuShop}
+        </Link>
+        <Link to="/" onClick={() => setRefForSaleSection(true)}>
+          {NavMenuCollections}
+        </Link>
       </NavMenu>
       <Logo />
       <NavMenu adaptiveNavMenu={windowWidth <= 850}>
-        <Link to="/">
+        <Link to="/" onClick={() => setRefForSearchSection(true)}>
           <span>
             <FontAwesomeIcon icon={faSearch} />
           </span>
@@ -65,13 +98,35 @@ function Header({ headerColor }) {
           </SignOutSection>
         )}
 
-        <Link to="/">{NavMenuBag}</Link>
-        <span>
-          <FontAwesomeIcon icon={faHeart} />
-        </span>
+        <Link
+          to="/bag"
+          onClick={() => dispatch(sendOrderFromBagSucceeded(null))}
+        >
+          {NavMenuBag}
+          {orderRequestResult
+            ? null
+            : productsInBagValue.length !== 0
+            ? ` (${productsInBagValue.length})`
+            : null}
+        </Link>
+        <Link to="/favorites">
+          <FontAwesomeIcon
+            className={
+              productToFavoritesSelector.length === 0 ? "" : "favorites_icon"
+            }
+            icon={
+              productToFavoritesSelector.length === 0 ? emptyHeart : faHeart
+            }
+          />
+        </Link>
       </NavMenu>
       <AdaptiveIcons>
-        <FontAwesomeIcon icon={faSearch} />
+        <Link to="/">
+          <FontAwesomeIcon
+            onClick={() => setRefForSearchSection(true)}
+            icon={faSearch}
+          />
+        </Link>
         {!userAuthData ? (
           <Link to="/login">
             <FontAwesomeIcon icon={faUserXmark} />
@@ -84,8 +139,19 @@ function Header({ headerColor }) {
             <FontAwesomeIcon icon={faUserCheck} />
           </SignOutSection>
         )}
-        <FontAwesomeIcon icon={faBagShopping} />
-        <FontAwesomeIcon icon={faHeart} />
+        <Link to="/bag">
+          <FontAwesomeIcon icon={faBagShopping} />
+        </Link>
+        <Link to="/favorites">
+          <FontAwesomeIcon
+            className={
+              productToFavoritesSelector.length === 0 ? "" : "favorites_icon"
+            }
+            icon={
+              productToFavoritesSelector.length === 0 ? emptyHeart : faHeart
+            }
+          />
+        </Link>
       </AdaptiveIcons>
     </StyleHeader>
   );
