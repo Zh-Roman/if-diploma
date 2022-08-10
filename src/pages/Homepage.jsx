@@ -17,6 +17,7 @@ import SearchSection from "../modules/seacrhSection/SearchSection";
 import { sortedSearchProductsDataSelector } from "../ducks/sortedSearchProducts/selectors";
 import { SearchResults } from "../configs/stringData";
 import RefForScrollContext from "../context/refForScrollContext";
+import useExecuteRef from "../hooks/useExecuteRef";
 
 export const HomepageStyle = styled.div`
   color: var(--main-black);
@@ -37,30 +38,28 @@ function Homepage() {
   );
   const filterValue = useSelector(filterValueSelector);
   const searchValue = useSelector(searchValueSelector);
-  const executeScrollToData = (ref) =>
-    ref.current?.scrollIntoView({ block: "start", behavior: "smooth" });
   const refForSortedProductsSection = useRef(null);
   const refForSortedSearchProductsSection = useRef(null);
   const refForShopCategory = useRef(null);
   const refForSaleCategory = useRef(null);
   useEffect(() => {
     if (sortedProductsData && sortedProductsData.length === 0) {
-      executeScrollToData(refForSortedProductsSection);
+      useExecuteRef(refForSortedProductsSection);
     }
   }, [sortedProductsData]);
   useEffect(() => {
     if (sortedSearchProductsData && sortedSearchProductsData.length === 0) {
-      executeScrollToData(refForSortedSearchProductsSection);
+      useExecuteRef(refForSortedSearchProductsSection);
       setRefForSearchSection(false);
     }
   }, [sortedSearchProductsData]);
   useEffect(() => {
     if (refForShopSection) {
-      executeScrollToData(refForShopCategory);
+      useExecuteRef(refForShopCategory);
       setRefForShopSection(false);
     }
     if (refForSaleSection) {
-      executeScrollToData(refForSaleCategory);
+      useExecuteRef(refForSaleCategory);
       setRefForSaleSection(false);
     }
   }, [refForShopSection, refForSaleSection]);

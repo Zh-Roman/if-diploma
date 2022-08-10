@@ -44,9 +44,9 @@ function Header({ headerColor }) {
   const windowWidth = useWindowSize().sizeWidth;
   const dispatch = useDispatch();
   const productToFavoritesSelector = useSelector(productsToFavoritesSelector);
-
+  const windowWidthValue = 850;
   useEffect(() => {
-    if (windowWidth > 850) {
+    if (windowWidth > windowWidthValue) {
       setBurgerMenu(false);
     }
   }, [windowWidth]);
@@ -67,7 +67,7 @@ function Header({ headerColor }) {
         <FontAwesomeIcon icon={burgerMenu ? faXmark : faBars} />
       </AdaptiveIcons>
       <NavMenu
-        adaptiveNavMenu={windowWidth <= 850}
+        adaptiveNavMenu={windowWidth <= windowWidthValue}
         burgerMenu={burgerMenu}
         setBurgerMenu={setBurgerMenu}
       >
@@ -80,7 +80,7 @@ function Header({ headerColor }) {
         </Link>
       </NavMenu>
       <Logo />
-      <NavMenu adaptiveNavMenu={windowWidth <= 850}>
+      <NavMenu adaptiveNavMenu={windowWidth <= windowWidthValue}>
         <Link to="/" onClick={() => setRefForSearchSection(true)}>
           <span>
             <FontAwesomeIcon icon={faSearch} />

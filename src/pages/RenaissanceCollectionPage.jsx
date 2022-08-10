@@ -8,10 +8,12 @@ import AdaptiveNewCollection from "../modules/newCollectionSection/AdaptiveNewCo
 function RenaissanceCollectionPage() {
   const windowWidth = useWindowSize().sizeWidth;
   const windowHeight = useWindowSize().sizeHeight;
+  const maxWindowWidth = 850;
+  const maxWindowHeight = 539;
   return (
     <div>
       <Header headerColor={RenaissanceCollectionData.color} />
-      {windowWidth <= 850 && windowHeight > 539 ? (
+      {windowWidth <= maxWindowWidth && windowHeight > maxWindowHeight ? (
         <AdaptiveNewCollection collectionData={RenaissanceCollectionData} />
       ) : (
         <NewCollectionSection collectionData={RenaissanceCollectionData} />

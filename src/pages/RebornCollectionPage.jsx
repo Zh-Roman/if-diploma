@@ -8,10 +8,12 @@ import useWindowSize from "../hooks/useWindowSize";
 function RebornCollectionPage() {
   const windowWidth = useWindowSize().sizeWidth;
   const windowHeight = useWindowSize().sizeHeight;
+  const windowWidthValue = 850;
+  const windowHeightValue = 539;
   return (
     <div>
       <Header headerColor={RebornCollectionData.color} />
-      {windowWidth <= 850 && windowHeight > 539 ? (
+      {windowWidth <= windowWidthValue && windowHeight > windowHeightValue ? (
         <AdaptiveNewCollection collectionData={RebornCollectionData} />
       ) : (
         <NewCollectionSection collectionData={RebornCollectionData} />

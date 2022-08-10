@@ -9,6 +9,7 @@ import {
 
 function ImageMagnifier({ src, alt }) {
   const windowWidth = useWindowSize().sizeWidth;
+  const minWindowWidth = 850;
   const [showMagnifier, setShowMagnifier] = useState(false);
   const [[imgWidth, imgHeight], setSize] = useState([0, 0]);
   const [[xPos, yPos], setXY] = useState([0, 0]);
@@ -34,7 +35,7 @@ function ImageMagnifier({ src, alt }) {
           setXY([x, y]);
         }}
       />
-      {windowWidth > 850 && (
+      {windowWidth > minWindowWidth && (
         <MagnifierPointer
           showMagnifier={showMagnifier}
           yPos={yPos}

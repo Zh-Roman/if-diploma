@@ -25,8 +25,10 @@ function PersolSection({ persolCollectionData }) {
   const [hiddenDescription, setHiddenDescription] = useState(false);
   const windowWidth = useWindowSize().sizeWidth;
   const windowHeight = useWindowSize().sizeHeight;
+  const windowWidthValue = 850;
+  const windowHeightValue = 539;
   let sliderPerView = 3.5;
-  if (windowWidth <= 850 && windowHeight > 539) {
+  if (windowWidth <= windowWidthValue && windowHeight > windowHeightValue) {
     sliderPerView = 1;
   }
   const handleOpenSlide = (e) => {

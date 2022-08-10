@@ -8,6 +8,7 @@ import {
   SortedProductsSectionStyle,
   SortedProductsBody,
 } from "./StyleSortedProductsSection";
+import useExecuteRef from "../../hooks/useExecuteRef";
 
 let productsPerView = 4;
 if (window.innerWidth <= 912 && window.innerHeight > 539) {
@@ -18,8 +19,6 @@ if (window.innerWidth <= 912 && window.innerHeight > 539) {
 let arrayForHoldingProducts = [];
 
 function SortedProductsSection({ filterValueTitle, sortedProductsData }) {
-  const executeScrollToData = (ref) =>
-    ref.current?.scrollIntoView({ block: "start", behavior: "smooth" });
   const refForSortedProductsSection = useRef(null);
   const [productsToShow, setProductsToShow] = useState([]);
   const [next, setNext] = useState(productsPerView);
@@ -29,7 +28,7 @@ function SortedProductsSection({ filterValueTitle, sortedProductsData }) {
     setProductsToShow(arrayForHoldingProducts);
   };
   useEffect(() => {
-    executeScrollToData(refForSortedProductsSection);
+    useExecuteRef(refForSortedProductsSection);
     arrayForHoldingProducts = [];
     setProductsToShow([]);
     setNext(productsPerView);
